@@ -2,10 +2,11 @@ import tkinter as tk
 from PIL import Image,ImageTk
 class homepage(object):
 
-	def __init__(self):
+	def __init__(self, build,win3):
+		self.top=win3
 		self.createUI()
 		self.db = None
-
+		self.build = build
 
 	def seehotel(self):
 		pass
@@ -14,12 +15,12 @@ class homepage(object):
 		pass
 
 	def createUI(self):
-		top = tk.Tk()
-		top.geometry('600x600')
+		# top = tk.Tk()
+		self.top.geometry('600x600')
 
 		canvasWidth = 600
 		canvasHeight = 600
-		canvas = tk.Canvas(top,width=canvasWidth,height=canvasHeight)
+		canvas = tk.Canvas(self.top,width=canvasWidth,height=canvasHeight)
 		image = Image.open("homepage.jpg")
 		backgroundImage = ImageTk.PhotoImage(image)
 
@@ -38,8 +39,7 @@ class homepage(object):
 		reviewbutton = tk.Button(frame1, font=("Ariel", 40), text = "WRITE REVIEW", fg = "green", padx = 15, pady = 10,width=11,height=3)
 		reviewbutton.pack()
 
-		top.mainloop()
+		self.top.mainloop()
 
 
 
-hpg = homepage()

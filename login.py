@@ -6,6 +6,7 @@
 
 from DW_Minor_Project import *
 from tkinter import *
+from homepage_UI import *
 import SignUp
 
 
@@ -16,7 +17,7 @@ class login:
         self.generate_login()
 
     def signup(self):
-        win2 = Toplevel(self.win)
+        win2 = Toplevel(self.top)
         SignUp.SignUp(win2,self.build)
 
     def validate_login(self):
@@ -30,14 +31,19 @@ class login:
             print("It works!!")
             self.headlabel['text']="Welcome!"
             #call homepage here
+            # win3 = Toplevel(self.win)
+            homepage(self.build,self.top)
         else:
             self.headlabel['text']="Wrong credentials!"
 
     def generate_login(self) :
-        self.win=Tk()
-        self.win.configure(background="light blue")
-        self.win.title("Welcome!")
-        self.win.geometry("500x100")
+        self.top=Tk()
+
+        self.top.configure(background="light blue")
+        self.top.title("Welcome!")
+        self.top.geometry("600x100")
+        self.win = Frame(self.top)
+        self.win.place(x=0,y=0,relwidth=1,relheight=1)
         self.headlabel = Label(self.win, text = 'Welcome to Hotel Booking App',fg = 'black', bg = "orange") 
         self.headlabel.grid(row = 0, column = 1)
         self.loginlabel = Label(self.win, text = 'Login!',fg = 'black', bg = "orange")
@@ -54,4 +60,5 @@ class login:
         self.signupbutton = Button(self.win, text = "SIGN UP", bg = "orange", fg = "black",command=self.signup)
         self.loginbutton.grid(row = 4, column = 0)
         self.signupbutton.grid(row = 4, column = 1)
-        self.win.mainloop()
+        self.win.pack()
+        self.top.mainloop()
