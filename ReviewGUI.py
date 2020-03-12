@@ -11,8 +11,8 @@ class Review:
         staff =  self.staffservice_entry.get()
         amenities = self.amenities_entry.get()
         food = self.foodquality_entry.get()
-        value = self.valueformoney_entry.get()
-        sql_query = "Insert into Review (CustomerID,HotelID, staff_service, amenities_provided, food_quality) Values ("+self.Id+","+hotelID+","+staff+","+amenities+","+food+");"
+        value = self.hygiene_entry.get()
+        sql_query = "Insert into Review (CustomerID,HotelID, staff_service, amenities_provided, hygiene, food_quality) Values ("+self.Id+","+hotelID+","+staff+","+amenities+","+value+","+food+");"
         mycursor=self.build.pr.mydb.cursor()
         mycursor.execute(sql_query)
         mycursor.execute("Select * from Review;")
@@ -20,7 +20,6 @@ class Review:
             print(i)
     def ReviewGUI(self):
         self.root = Tk()
-        self.root.title("Review Hotel")
         self.root.title("Review Hotel")
         self.root.geometry("400x400")
 
@@ -59,9 +58,7 @@ class Review:
         self.hygiene_entry = Entry(frame1)
         self.hygiene_entry.grid(row=8, column=1, sticky="w")
 
-        Label(frame1, text="Value for Money : ").grid(row=8, column=0, sticky="W")
-        self.valueformoney_entry = Entry(frame1)
-        self.valueformoney_entry.grid(row=8, column=1, sticky="w")
+        
 
         Label(frame1).grid(row=9)
 
