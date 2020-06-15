@@ -7,15 +7,15 @@ def connect_to_sql(db):
     if len(db)>0:
         mydb = mysql.connector.connect(
           host="localhost",
-          user="suyash-singh",
-          passwd="Helloworld27!",
+          user="User",
+          passwd="passwd",
         database=db
         )
     else:
         mydb = mysql.connector.connect(
           host="localhost",
-          user="suyash-singh",
-          passwd="Helloworld27!"
+          user="User",
+          passwd="Passwd"
          )
     return mydb
 
